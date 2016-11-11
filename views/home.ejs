@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>Node Calculator</title>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    	<link rel='stylesheet' href='/stylesheets/style.css' />
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+	function clearText()
+	{
+		document.getElementById("resultGrid").value="0";
+	}
+
+	function validateZero()
+	{
+				if(document.getElementById("inputGrid").value=="0")
+				{
+					alert("Zero is an Invalid Input");
+					return false;
+				}
+				else
+				{
+					return true;
+				}
+				
+	}
+	
+	</script>
+
+	</head>
+	<body>
+	<form action="/calculate" method="post" class="afterSignIn">
+    <!-- This panel is for login -->
+    
+    <div class="panel panel-primary" style="width:335px;">
+      <!-- Default panel contents -->
+        <div class="panel-heading" style="padding:15px;">Calculator</div>
+        <div class="panel-body">
+           <form class="form-horizontal" role="form">
+           	<div class="form-group  usernameDiv" style="margin-top:20px;">
+           		<div class="col-sm-11">
+		                      <input type="text" style="margin-bottom:20px;width:215px" class="form-control" readonly  value=<%= data%>  name="resultGrid" id="resultGrid" required>
+		                  </div>
+		                  <label style="margin-left:18px">Insert Numbers</label>
+		                  <div class="col-sm-11">
+		                      <input type="text" style="width:215px" class="form-control" name="inputGrid" id="inputGrid" required placeholder="Numbers Only">
+		                  </div>
+			</div>
+			<div class="form-group">
+				<div class="form-group">
+		                  <!--<label style="margin-left:18px">Insert Numbers</label>-->
+		                  	
+		                      <!--<input type="text" style="width:270px" class="form-control" name="inputUsername" id="inputUsername" required placeholder="Username">-->
+		                    <button type="submit" style="margin-left:70px;" name="evaluate" id="evaluate"  value="plus" class="btn btn-success">+</button>
+							<button type="submit" class="btn btn-info" name="evaluate" id="evaluate"  value="minus">-</button>
+							<button type="submit" class="btn btn-warning" name="evaluate" id="evaluate"  value="multiply">*</button>
+							<button type="submit" class="btn btn-danger" name="evaluate" id="evaluate" value="divide" onclick="return validateZero(this)">/</button>
+							<!--<button type="submit" class="btn btn-primary" name="evaluate" id="evaluate"  value="equal">=</button>
+							<br/>-->
+		               		<button type="button" style="margin-left:52px; width:215px" class="btn btn-primary" onclick="clearText(true)" name="clearButton" id="clearButton"  value="equal">Reset</button>
+		              </div>
+			</div>
+		</div>
+           </form>
+
+
+
+       </div>
+    </div>
+	</form>
+	</body>
+	<script type="text/javascript">
+	window.onload = function()  
+	{
+		var isNotNumner = <%= nan %> 
+		if(isNotNumner)
+		{
+			alert("Please insert Numbers Only");
+		}
+	}
+		
+
+	</script>
+</html>
